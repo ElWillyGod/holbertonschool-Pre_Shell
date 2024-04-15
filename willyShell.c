@@ -8,12 +8,12 @@
 #define MAX_ARGS 64
 
 char *leer_entrada(){
-	char *imput;
-	size_t imput_salida = 0;
+	char *input;
+	size_t input_salida = 0;
 
-	getline(&imput, &imput_salida, stdin);
+	getline(&input, &input_salida, stdin);
 
-	return (imput);
+	return (input);
 }
 
 char **separar_parametros(char *imput){
@@ -39,7 +39,7 @@ char **separar_parametros(char *imput){
 	return (args);
 }
 
-void execure_command(char **args){
+void execute_command(char **args){
 	pid_t pid = fork();
 
 	if (pid == -1) {
@@ -58,21 +58,21 @@ void execure_command(char **args){
 int main(){
 	while (1) {
 		printf("WillyShel> ");
-		char *imput = leer_entrada();
-		size_t imput_leida = strlen(imput);
+		char *input = leer_entrada();
+		size_t input_leida = strlen(input);
 
-		if (imput_leida <= 1)
+		if (input_leida <= 1)
 			continue;
 
-		char **args = separar_parametros(imput);
+		char **args = separar_parametros(input);
 
 		if (strcmp(args[0], "exit") == 0) {
 		break;
 		}
 
-		execure_command(args);
+		execute_command(args);
 
-		free(imput);
+		free(input);
 		free(args);
 	}
 
