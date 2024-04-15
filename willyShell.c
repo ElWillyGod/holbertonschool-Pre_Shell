@@ -61,8 +61,8 @@ int main(){
 		char *imput = leer_entrada();
 		size_t imput_leida = strlen(imput);
 
-		if (imput_leida <= 0)
-			break;
+		if (imput_leida <= 1)
+			continue;
 
 		char **args = separar_parametros(imput);
 
