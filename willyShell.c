@@ -114,7 +114,6 @@ int main(){
 		if (strcmp(args[0], "exit") == 0) {
 			free(input);
 			free(args);
-			free(input_leida);
 			break;
 		}
 
