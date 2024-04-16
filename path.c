@@ -1,4 +1,5 @@
 #include "main.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -40,3 +41,7 @@ Tlist *path_list(){
 	return (head);
 }
 
+Tlist *path_addToEnd(Tlist *path, char *direct)
+{
+	return (NULL); 
+}

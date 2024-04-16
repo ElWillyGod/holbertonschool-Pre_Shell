@@ -69,7 +69,8 @@ void execute_command(char **args){
 		perror("ERROR fork");
 		exit(100);
 	}else if (pid == 0) {
-		if (execve(comando, args, NULL) < 0) {
+		if (execve(comando, args, NULL) < 0)
+		{
 			perror("ERROR command");
 			exit(99);
 		}
