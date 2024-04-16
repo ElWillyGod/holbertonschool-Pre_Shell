@@ -45,3 +45,13 @@ Tlist *path_addToEnd(Tlist *path, char *direct)
 {
 	return (NULL); 
 }
+
+void path_free(Tlist *head){
+	Tlist *cursor = head;
+
+	while (cursor) {
+		Tlist *aux = cursor->next;
+		free(cursor);
+		cursor = aux;
+	}
+}

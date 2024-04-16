@@ -34,5 +34,6 @@ void execute_command(char **args);
 
 Tlist *path_list();
 Tlist *path_addToEnd(Tlist *path, char *direct);
+void path_free(Tlist *a);
 
 #endif /* MAIN_H */
