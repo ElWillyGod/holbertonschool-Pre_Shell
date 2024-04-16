@@ -1,9 +1,11 @@
 #include "main.h"
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+
 char *leer_entrada(){
-	char *input;
+	char *input = NULL;
 	size_t input_salida = 0;
 
 	getline(&input, &input_salida, stdin);
@@ -16,42 +18,16 @@ char **separar_string(char *input, char *separador){
 	char **args = malloc(MAX_ARGS * sizeof(char *));
 	int cant_args;
 
-/**	if (input == NULL || input[0] == '\0') {
-		args[0] = NULL;
-		return (args);
-	} */
-
 	char *token = strtok(input, separador);
 	for (cant_args = 0; token; cant_args++) {
 
 		args[cant_args] = token;
 		token = strtok(NULL, separador);
-	
 	}
 
 	args[cant_args] = NULL;
 
 	return (args);
-}
-char *_getenv(const char *var)
-{
-	if (var == NULL)
-		return (NULL);
-
-	char *cursor = malloc(256 * sizeof(char));
-	char *puntero = *environ;
-
-	while (*puntero) {
-		if (strncmp(puntero, var, strlen(var)) == 0 && puntero[strlen(var)] == '=') {
-			strcpy(cursor, puntero);
-			return (cursor);
-		}
-		puntero += strlen(puntero) + 1;
-	}
-
-	free(cursor);
-	return (NULL);
-
 }
 char *dir_command(char * command){
 	char *path, *temp;
@@ -71,11 +47,13 @@ char *dir_command(char * command){
 		strcat(aux, command);
 
 		if (access(aux, X_OK) == 0) {
+			free(path);
 			return strdup(aux);
 		}
 
 		temp = strtok(NULL, ":");
 	}
+	free(path);
 	return (NULL);
 }
 void execute_command(char **args){
@@ -104,7 +82,9 @@ int main(){
 	while (1) {
 		printf("WillyShel> ");
 		char *input = leer_entrada();
+		printf("%s\n", input);
 		size_t input_leida = strlen(input);
+		printf("%li\n", input_leida);
 
 		if (input_leida <= 1)
 			continue;
@@ -115,7 +95,7 @@ int main(){
 			free(input);
 			free(args);
 			break;
-		}
+	}
 
 		execute_command(args);
 

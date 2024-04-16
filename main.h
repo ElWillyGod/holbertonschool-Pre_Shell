@@ -28,6 +28,7 @@ char *dir_command(char *command);
 char **separar_string(char *input, char *separador);
 
 char *_getenv(const char *busc);
+int _setenv(const char *name, const char *value, int overwrite);
 
 void execute_command(char **args);
 
