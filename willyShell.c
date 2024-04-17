@@ -80,7 +80,7 @@ void execute_command(char **args){
 }
 
 int main(){
-	while (1) {
+/**	while (1) {
 		printf("WillyShel> ");
 		char *input = leer_entrada();
 		printf("%s\n", input);
@@ -94,7 +94,7 @@ int main(){
 
 		if (strcmp(args[0], "exit") == 0) {
 			free(input);
-			free(args);
+			free(args); 
 			break;
 	}
 
@@ -102,8 +102,11 @@ int main(){
 
 		free(input);
 		free(args);
-	}
+	} 
+*/
 
-
+	Tlist *path = path_in_list();
+	print_list(path);
+	free_list(path);
 	return (0);
 }

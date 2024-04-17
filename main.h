@@ -32,8 +32,7 @@ int _setenv(const char *name, const char *value, int overwrite);
 
 void execute_command(char **args);
 
-Tlist *path_list();
-Tlist *path_addToEnd(Tlist *path, char *direct);
-void path_free(Tlist *a);
-
+void free_list(Tlist *i);
+void print_list(Tlist *i);
+Tlist *path_in_list();
 #endif /* MAIN_H */
